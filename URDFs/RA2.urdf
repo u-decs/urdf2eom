@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!-- Dual Arm Manipulator -->
+<robot
+  name="RA2">
+ <!-- base_link -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.1149 0.0755 0"
+        rpy="0 0 0" />
+      <mass
+        value="15.41" />
+      <inertia
+        ixx="0.68"
+        ixy="0"
+        ixz="0"
+        iyy="0.64"
+        iyz="0"
+        izz="0.13" />
+    </inertial>
+  </link>
+
+  <!-- Right Arm -->
+  <!-- link1 -->
+  <link
+    name="L1RA">
+    <inertial>
+      <origin
+        xyz="0.09 0.03 -0.04"
+        rpy="0 0 0" />
+      <mass
+        value="3.45" />
+      <inertia
+        ixx="0.01"
+        ixy="0"
+        ixz="0"
+        iyy="0.02"
+        iyz="0"
+        izz="0.02" />
+    </inertial>
+  </link>
+
+  <!-- joint1 -->
+  <joint
+    name="J1RA"
+    type="revolute">
+    <origin
+      xyz="0.2050 0.1079 0.275"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="L1RA" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="3000" velocity="0.5" lower="${-0.15 * pi}" upper="${0.22 * pi}" />
+    <dynamics damping="0.5" friction="500" />
+  </joint>
+
+  <!-- link2 -->
+  <link
+    name="L2RA">
+    <inertial>
+      <origin
+        xyz="0.24 0.03 0"
+        rpy="0 0 0" />
+      <mass
+        value="7.52" />
+      <inertia
+        ixx="0.04"
+        ixy="0.01"
+        ixz="-0.01"
+        iyy="0.22"
+        iyz="0"
+        izz="0.23" />
+    </inertial>
+
+  </link> 
+
+  <!-- joint2 -->
+  <joint
+    name="J2RA"
+    type="revolute">
+    <origin
+      xyz="0.1273 -0.0320 0"
+      rpy="-pi/2 0 0" />
+    <parent
+      link="L1RA" />
+    <child
+      link="L2RA" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="3000" velocity="0.5" lower="${-0.0555 * pi}" upper="${0.361 * pi}" />
+    <dynamics damping="0.5" friction="80" />
+  </joint>
+
+ </robot>
