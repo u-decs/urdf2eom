@@ -2,14 +2,14 @@ function [tau] = urdf2eomID(file,simplifyflag)
 %Generates equation of motion in symbolic form from urdf file 
 %Based on RNEA inverse dynamics code by Roy Featherstone, 2015
 %http://royfeatherstone.org/spatial/v2/index.html
-
+%%
 %Load urdf and convert to SMDS format
 smds = urdf2smds(file);
-
+%%
 %Initialize variables
-q = sym('q',[1,smds.NB],'real');
-qd = sym('qd',[1,smds.NB],'real');
-qdd = sym('qdd',[1,smds.NB],'real');
+q = sym('q_',[1,smds.NB],'real');
+qd = sym('qd_',[1,smds.NB],'real');
+qdd = sym('qdd_',[1,smds.NB],'real');
 syms g;
 
 %Gravity
